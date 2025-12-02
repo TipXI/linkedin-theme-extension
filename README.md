@@ -15,6 +15,10 @@ This extension solves that by automatically injecting the specific `li_theme` co
 * **Cross-Browser:** Supports Chrome (MV3), Edge, and Firefox.
 * **Configurable:** Choose between Dark, Light, or System Default in the extension settings.
 
+## 🛠️ Development (Source Code)
+* **Chrome:** Load the folder directly. The browser reads `manifest.json`.
+* **Firefox:** You must temporarily rename `manifest-firefox.json` to `manifest.json` to test locally.
+
 ## 📦 Installation (Developer Mode)
 
 Since this is a niche privacy tool, you can install it manually without waiting for Store approval:
@@ -29,7 +33,14 @@ Since this is a niche privacy tool, you can install it manually without waiting 
 ### Firefox
 1.  Open `about:debugging#/runtime/this-firefox`.
 2.  Click **Load Temporary Add-on...**.
-3.  Select the `manifest.json` file from this repository.
+3.  Delete `manifest.json`.
+4.  Rename `manifest-firefox.json` to `manifest.json`.
+5.  Select the `manifest.json` file from this repository.
+
+## 📦 Installation (For Users)
+Go to the **[Releases]** page to download the ready-to-use version for your browser:
+* **Chrome/Edge:** Download `chrome-extension.zip`
+* **Firefox:** Download `firefox-extension.zip`
 
 ## 🛡️ Privacy Policy
 This extension does **not** collect, store, or transmit any user data.

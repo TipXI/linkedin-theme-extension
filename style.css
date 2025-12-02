@@ -1,0 +1,61 @@
+body {
+    width: 220px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 15px;
+    background-color: #1d2226;
+    /* LinkedIn Dark Background */
+    color: #ffffff;
+    margin: 0;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #e8e6df;
+    text-align: center;
+    border-bottom: 1px solid #38434f;
+    padding-bottom: 10px;
+}
+
+.option {
+    background: #000000;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #38434f;
+    transition: all 0.2s ease-in-out;
+}
+
+.option:hover {
+    border-color: #70b5f9;
+    /* LinkedIn Blue */
+    background-color: #1b1f23;
+}
+
+input[type="radio"] {
+    margin-right: 12px;
+    cursor: pointer;
+    accent-color: #70b5f9;
+    transform: scale(1.1);
+}
+
+label {
+    cursor: pointer;
+    flex-grow: 1;
+    font-size: 14px;
+    color: #e8e6df;
+    font-weight: 500;
+}
+
+.footer {
+    margin-top: 15px;
+    font-size: 11px;
+    color: #a0b4b7;
+    text-align: center;
+    opacity: 0.8;
+}

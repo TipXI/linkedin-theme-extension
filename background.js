@@ -8,42 +8,94 @@ const THEME_MAP = {
     system: "system"
 };
 
-async function applyThemeCookie() {
-    const storage = await chrome.storage.sync.get(["theme"]);
-    const theme = storage.theme || DEFAULT_THEME;
+// URL patterns to identify LinkedIn tabs
+const COOKIE_DOMAIN = ".linkedin.com";
+const LINKEDIN_URL = "https://www.linkedin.com/";
+const URL_PATTERNS = ["https://www.linkedin.com/*", "https://*.linkedin.com/*"];
 
-    const cookieValue = THEME_MAP[theme];
-
-    // Create expiration: 1 year from now
-    const expiration = Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 365;
-
-    // Set the LinkedIn cookie
-    chrome.cookies.set({
-        url: "https://www.linkedin.com/",
-        name: "li_theme",
-        value: cookieValue,
-        domain: ".www.linkedin.com",
-        path: "/",
-        secure: true,
-        httpOnly: false,
-        sameSite: "no_restriction",
-        expirationDate: expiration
+// 1. Wrapper to make Storage work in Firefox (Callback) and Chrome (Promise)
+function getStorage(keys) {
+    return new Promise((resolve) => {
+        chrome.storage.local.get(keys, (result) => {
+            if (chrome.runtime.lastError) {
+                console.warn("Storage warning:", chrome.runtime.lastError);
+                resolve({});
+            } else {
+                resolve(result || {});
+            }
+        });
     });
 }
 
-// On browser startup
+// 2. Wrapper to make Cookies work in Firefox (Callback) and Chrome (Promise)
+function setCookie(details) {
+    return new Promise((resolve, reject) => {
+        chrome.cookies.set(details, (cookie) => {
+            if (chrome.runtime.lastError) {
+                reject(chrome.runtime.lastError);
+            } else {
+                resolve(cookie);
+            }
+        });
+    });
+}
+
+
+async function applyThemeCookie(shouldReload) {
+    try {
+        const storage = await getStorage(["theme"]);
+        const theme = storage.theme || DEFAULT_THEME;
+
+        const cookieValue = THEME_MAP[theme];
+
+        // Create expiration: 1 year from now
+        const expiration = Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 365;
+        console.log(`Attempting to set cookie: ${cookieValue} on ${COOKIE_DOMAIN}`);
+        // 1. Set the LinkedIn cookie and WAIT for it to finish
+        await setCookie({
+            url: LINKEDIN_URL,
+            name: "li_theme",
+            value: cookieValue,
+            domain: COOKIE_DOMAIN,
+            path: "/",
+            secure: true,
+            httpOnly: false,
+            sameSite: "no_restriction",
+            expirationDate: expiration
+        });
+
+        console.log("Cookie Success!");
+        // 2. Only reload tabs if this was triggered by a user change (not startup)
+        if (shouldReload) {
+            reloadLinkedInTabs();
+        }
+    } catch (error) {
+        console.error("LinkedIn Theme Restorer Error:", error);
+    }
+}
+
+function reloadLinkedInTabs() {
+    // Query all tabs that match LinkedIn URLs
+    chrome.tabs.query({ url: URL_PATTERNS }, (tabs) => {
+        for (const tab of tabs) {
+            chrome.tabs.reload(tab.id);
+        }
+    });
+}
+
+// On browser startup: Set cookie (No reload needed, user hasn't opened tabs yet)
 chrome.runtime.onStartup.addListener(() => {
-    applyThemeCookie();
+    applyThemeCookie(false);
 });
 
-// On extension install or update
+// On extension install: Set cookie
 chrome.runtime.onInstalled.addListener(() => {
-    applyThemeCookie();
+    applyThemeCookie(false);
 });
 
-// When user changes theme in options page
+// On user change in Popup: Set cookie AND Reload
 chrome.storage.onChanged.addListener((changes) => {
     if (changes.theme) {
-        applyThemeCookie();
+        applyThemeCookie(true); // Pass true to trigger reload
     }
 });
