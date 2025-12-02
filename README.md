@@ -43,7 +43,7 @@ You can download the ready-to-use versions directly below:
 * 🟢 **Chrome / Edge:** [Download linkedin-theme-chrome-v1.0.zip](https://github.com/TipXI/linkedin-theme-extension/releases/download/v1.0/linkedin-theme-chrome-v1.0.zip)
 * 🦊 **Firefox:** [Download linkedin-theme-firefox-v1.0.zip](https://github.com/TipXI/linkedin-theme-extension/releases/download/v1.0/linkedin-theme-firefox-v1.0.zip)
 
-*(See the [Releases Page](https://github.com/TipXI/git stautslinkedin-theme-extension/releases) for older versions or source code)*
+*(See the [Releases Page](https://github.com/TipXI/linkedin-theme-extension/releases) for older versions or source code)*
 
 ## 🛡️ Privacy Policy
 This extension does **not** collect, store, or transmit any user data.
