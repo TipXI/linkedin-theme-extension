@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            width: 220px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 15px;
+            background-color: #f3f2ef;
+            /* LinkedIn-ish grey */
+            margin: 0;
+        }
+
+        h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .option {
+            background: white;
+            margin-bottom: 8px;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            transition: all 0.2s;
+        }
+
+        .option:hover {
+            border-color: #0a66c2;
+            /* LinkedIn Blue */
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        label {
+            cursor: pointer;
+            flex-grow: 1;
+            font-size: 14px;
+        }
+
+        .footer {
+            margin-top: 15px;
+            font-size: 11px;
+            color: #666;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Theme Settings</h3>
+
+    <div class="option">
+        <input type="radio" id="dark" name="theme" value="dark">
+        <label for="dark">Dark Mode</label>
+    </div>
+
+    <div class="option">
+        <input type="radio" id="light" name="theme" value="light">
+        <label for="light">Light Mode</label>
+    </div>
+
+    <div class="option">
+        <input type="radio" id="system" name="theme" value="system">
+        <label for="system">System Default</label>
+    </div>
+
+    <div class="footer">
+        Changes apply on reload
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

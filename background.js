@@ -5,7 +5,7 @@ const DEFAULT_THEME = "dark"; // dark | light | system
 const THEME_MAP = {
     dark: "dark",
     light: "light",
-    system: "" // LinkedIn uses empty string for system mode
+    system: "system"
 };
 
 async function applyThemeCookie() {
