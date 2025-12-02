@@ -38,9 +38,12 @@ Since this is a niche privacy tool, you can install it manually without waiting 
 5.  Select the `manifest.json` file from this repository.
 
 ## 📦 Installation (For Users)
-Go to the **[Releases]** page to download the ready-to-use version for your browser:
-* **Chrome/Edge:** Download `chrome-extension.zip`
-* **Firefox:** Download `firefox-extension.zip`
+You can download the ready-to-use versions directly below:
+
+* 🟢 **Chrome / Edge:** [Download linkedin-theme-chrome-v1.0.zip](https://github.com/TipXI/linkedin-theme-extension/releases/download/v1.0/linkedin-theme-chrome-v1.0.zip)
+* 🦊 **Firefox:** [Download linkedin-theme-firefox-v1.0.zip](https://github.com/TipXI/linkedin-theme-extension/releases/download/v1.0/linkedin-theme-firefox-v1.0.zip)
+
+*(See the [Releases Page](https://github.com/TipXI/git stautslinkedin-theme-extension/releases) for older versions or source code)*
 
 ## 🛡️ Privacy Policy
 This extension does **not** collect, store, or transmit any user data.
