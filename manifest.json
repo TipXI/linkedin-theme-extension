@@ -1,0 +1,21 @@
+{
+    "name": "LinkedIn Theme Restorer",
+    "description": "Automatically restores the LinkedIn theme (dark/light) via cookie.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": [
+        "cookies",
+        "storage"
+    ],
+    "host_permissions": [
+        "https://www.linkedin.com/*",
+        "https://*.linkedin.com/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "options_page": "options.html",
+    "icons": {
+        "128": "icon-dark.png"
+    }
+}
